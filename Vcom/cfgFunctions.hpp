@@ -150,3 +150,25 @@ class RYD
 		class Shellview {};
 	};
 };
+
+class AL9K
+{
+	// ALERT9K's Smarter Tanks
+	class STNK_Functions
+	{
+		file = "Vcom\Functions\STNK_Functions";
+		class Calc_Diff {};
+		class Calc_Direction {};
+		class Calc_Los {};
+		class Calc_Threat {};
+		class Has_Ammo {};
+		class List_Weapons {};
+		class Load_Mag {};
+		class LogTxt {};
+		class Rotate {};
+		class Scan {};
+		class Setup {};
+		class Smart {};
+		class SubStr {};
+	};
+};

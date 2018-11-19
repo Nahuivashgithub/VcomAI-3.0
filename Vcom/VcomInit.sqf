@@ -53,6 +53,8 @@ VCOM_MINEARRAY = [];
 //Begin Artillery function created by Rydygier - https://forums.bohemia.net/forums/topic/159152-fire-for-effect-the-god-of-war-smart-simple-ai-artillery/
 if (VCM_FFEARTILLERY) then {nul = [] execVM "Vcom\RYD_FFE\FFE.sqf";VCM_ARTYENABLE = false;};
 
+if (/*VCM_AL9KTANKS*/ true) then {nul = [] spawn AL9K_fnc_Smart};
+
 //Below is loop to check for new AI spawning in to be added to the list
 [] spawn
 {
