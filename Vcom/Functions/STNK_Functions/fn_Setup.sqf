@@ -139,12 +139,12 @@ diag_log format ["AL9K_fnc_Setup: started for %1, isServer: %2", _unit, str isSe
 
 // Find the name of main cannon and MG
 {
-	if ((["cannon", _x] call AL9K_fnc_SubStr) == 0) then 
+	if (["cannon", _x] call BIS_fnc_inString) then 
 	{
 		_has_cannon = true;
 		_cannon_name = _x;
 	};
-	if ((["MG", _x] call AL9K_fnc_SubStr) != -1) then 
+	if (["MG", _x] call BIS_fnc_inString) then 
 	{
 		_mg_name = _x;
 	};

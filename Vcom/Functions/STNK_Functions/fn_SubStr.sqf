@@ -3,6 +3,8 @@
 // 0: string to find
 // 1: string to look in
 
+//Deprecated
+
 params ["_find", "_inputStr"];
 
 private _string = toArray (_inputStr);
