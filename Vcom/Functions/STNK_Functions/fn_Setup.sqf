@@ -152,9 +152,18 @@ diag_log format ["AL9K_fnc_Setup: started for %1, isServer: %2", _unit, str isSe
 
 // Find the names of rounds
 {
-	if ((["AP", _x] call AL9K_fnc_SubStr) >= 0) then {_ap_round = _x};
-	if ((["HEAT", _x] call AL9K_fnc_SubStr) >= 0) then {_heat_round = _x};
-	if ((["HE_", _x] call AL9K_fnc_SubStr) >= 0) then {_he_round = _x};
+	switch (getText configFile >> "CfgAmmo" >> _x >> "warheadName") do
+	{
+		case "AP": {_ap_round = _x};
+		case "HEAT": {_heat_round = _x};
+		case "HE": {_he_round = _x};
+		case "TandemHEAT": {};
+		default {};
+	};
+	
+	//if ((["AP", _x] call AL9K_fnc_SubStr) >= 0) then {_ap_round = _x};
+	//if ((["HEAT", _x] call AL9K_fnc_SubStr) >= 0) then {_heat_round = _x};
+	//if ((["HE_", _x] call AL9K_fnc_SubStr) >= 0) then {_he_round = _x};
 } foreach (magazines _unit);
 
 // Make AP rounds the default
