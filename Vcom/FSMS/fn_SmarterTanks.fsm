@@ -1,0 +1,366 @@
+/*%FSM<COMPILE "E:\Games\SteamLibrary\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, fn_SmarterTanks">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"BEGIN",0,250,-162.734802,-56.662933,-72.734802,-6.662933,0.000000,"BEGIN"};
+item1[] = {"INITIAL_CHECKS",4,218,-162.454865,-149.655396,-72.454865,-99.655396,100.000000,"INITIAL CHECKS"};
+item2[] = {"EXIT",1,250,-291.434235,-147.686279,-201.434204,-97.686295,0.000000,"EXIT"};
+item3[] = {"PREPARE_VARIABLE",8,218,-163.571381,12.619995,-73.571518,62.619980,0.000000,"PREPARE" \n "VARIABLES"};
+item4[] = {"START",2,250,-39.776337,53.164978,50.223679,103.164978,0.000000,"START"};
+item5[] = {"GOTO_MAIN",4,218,118.601807,53.646851,208.601807,103.646851,10.000000,"GOTO MAIN"};
+item6[] = {"EXIT_CONDITION",4,218,-291.692749,52.174835,-201.692642,102.174843,75.000000,"EXIT" \n "CONDITION"};
+item7[] = {"CALCULATE_THREAT",2,4346,309.421692,53.505539,399.421722,103.505539,0.000000,"CALCULATE" \n "THREATS"};
+item8[] = {"FOUND_TARGET",4,218,309.684753,-21.860748,399.684753,28.139252,0.000000,"FOUND" \n "TARGET"};
+item9[] = {"NOTARGET",8,218,558.836182,54.121552,648.836182,104.121552,0.000000,"NOTARGET"};
+item10[] = {"LOAD_AMMO",2,250,309.767334,-99.761749,399.767365,-49.761749,0.000000,"LOAD AMMO"};
+item11[] = {"TANK",4,218,289.128510,-192.068298,379.128510,-142.068298,150.000000,"TANK"};
+item12[] = {"SOFT",4,218,381.248962,-190.731339,471.248962,-140.731339,100.000000,"SOFT"};
+item13[] = {"MAN",4,218,474.310547,-190.731415,564.310608,-140.731415,50.000000,"MAN"};
+item14[] = {"NO_GUNNER",4,218,118.223427,162.940063,208.223434,212.940063,50.000000,"NO GUNNER"};
+item15[] = {"NO_DRIVER",4,218,119.328201,109.905243,209.328201,159.905243,25.000000,"NO DRIVER"};
+item16[] = {"ORIENT_HULL",2,250,310.165070,-276.016602,400.165100,-226.016647,0.000000,"ORIENT HULL"};
+item17[] = {"SAME_TARGET",4,218,199.200867,-191.790802,289.200836,-141.790802,0.000000,"SAME" \n "TARGET"};
+item18[] = {"_",-1,250,192.516266,-87.511169,197.863922,-87.511169,0.000000,""};
+item19[] = {"CLOCK",4,218,-40.151917,123.578743,49.848083,173.578735,100.000000,"CLOCK"};
+item20[] = {"____FAKE____",9,0,0.000000,0.000000,4386719138400239600000000000000000.000000,0.000000,0.000000,"____FAKE____"};
+version=1;
+class LayoutItems
+{
+	class Item18
+	{
+		class ItemInfo
+		{
+			Shape=6;
+			FontFace="Arial";
+			FontHeight=13;
+			lStyle=1;
+			Align=0;
+			lColor=-1;
+		};
+	};
+};
+link0[] = {0,1};
+link1[] = {0,3};
+link2[] = {1,2};
+link3[] = {3,4};
+link4[] = {4,5};
+link5[] = {4,6};
+link6[] = {4,14};
+link7[] = {4,15};
+link8[] = {4,19};
+link9[] = {5,7};
+link10[] = {6,2};
+link11[] = {7,8};
+link12[] = {7,9};
+link13[] = {8,10};
+link14[] = {10,11};
+link15[] = {10,12};
+link16[] = {10,13};
+link17[] = {10,17};
+link18[] = {11,16};
+link19[] = {12,16};
+link20[] = {13,16};
+link21[] = {14,4};
+link22[] = {15,4};
+link23[] = {17,16};
+link24[] = {19,4};
+link25[] = {9,20};
+globals[] = {0.000000,0,0,0,0,640,480,1,49,6316128,1,-34.090088,809.980469,460.626099,-339.809021,619,587,1};
+window[] = {0,-1,-1,-32000,-32000,1001,300,1608,242,1,637};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "fn_SmarterTanks";
+        class States
+        {
+                /*%FSM<STATE "BEGIN">*/
+                class BEGIN
+                {
+                        name = "BEGIN";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"params [""_vehicle""];" \n
+                         "" \n
+                         "private _driver = driver _vehicle;" \n
+                         "private _commander = commander _vehicle;" \n
+                         "private _gunner = commander _vehicle;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "INITIAL_CHECKS">*/
+                                class INITIAL_CHECKS
+                                {
+                                        itemno = 1;
+                                        priority = 100.000000;
+                                        to="EXIT";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"false"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "PREPARE_VARIABLE">*/
+                                class PREPARE_VARIABLE
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="START";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"(_vehicle call AL9K_fnc_ListAmmo) params" \n
+                                         "[" \n
+                                         "	""_magAP""," \n
+                                         "	""_magHEAT""," \n
+                                         "	""_magHE""," \n
+                                         "	""_magTandem""" \n
+                                         "];" \n
+                                         "" \n
+                                         "private _hasAP = !isNull _magAP;" \n
+                                         "private _hasHEAT = !isNull _magHEAT;" \n
+                                         "private _hasHE = !isNull _magHE;" \n
+                                         "private _hasTandem = !isNull _magTandem;" \n
+                                         "private _hasMG = vehicle call AL9K_fnc_HasMG;" \n
+                                         "" \n
+                                         "// Make AP rounds the default" \n
+                                         "if (_ap_round != """" and _has_cannon) then {" \n
+                                         "	_defaultMag = _magAP;" \n
+                                         "	_currentMag = _magAP;" \n
+                                         "	[_vehicle, _ap_round] call AL9K_fnc_Load_Mag;" \n
+                                         "};" \n
+                                         "" \n
+                                         "if VCM_DEBUG then {[_unit, ""Start""] call AL9K_fnc_LogTxt;};"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "EXIT">*/
+                class EXIT
+                {
+                        name = "EXIT";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "START">*/
+                class START
+                {
+                        name = "START";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/"_t = time; //Check PreCondition" \n
+                         "" \n
+                         "_driver = driver _vehicle;" \n
+                         "_commander = commander _vehicle;" \n
+                         "_gunner = commander _vehicle;" \n
+                         "" \n
+                         "//TODO: Check Ammo"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "CLOCK">*/
+                                class CLOCK
+                                {
+                                        itemno = 19;
+                                        priority = 100.000000;
+                                        to="START";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _t + 0.5"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_t = time;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "EXIT_CONDITION">*/
+                                class EXIT_CONDITION
+                                {
+                                        itemno = 6;
+                                        priority = 75.000000;
+                                        to="EXIT";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!local _vehicle || " \n
+                                         "{!alive _vehicle} || " \n
+                                         "{({alive _x} count crew _vehicle) isEqualTo 0}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "NO_GUNNER">*/
+                                class NO_GUNNER
+                                {
+                                        itemno = 14;
+                                        priority = 50.000000;
+                                        to="START";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(isNull _gunner || !alive _gunner) &&" \n
+                                         "{(!isNull _commander || !isNull _commander)}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "NO_DRIVER">*/
+                                class NO_DRIVER
+                                {
+                                        itemno = 15;
+                                        priority = 25.000000;
+                                        to="START";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(isNull _driver || !alive _driver) &&" \n
+                                         "{(!isNull _commander || !isNull _commander)}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "GOTO_MAIN">*/
+                                class GOTO_MAIN
+                                {
+                                        itemno = 5;
+                                        priority = 10.000000;
+                                        to="CALCULATE_THREAT";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isPlayer _commander &&" \n
+                                         "{!isPlayer _gunner} &&" \n
+                                         "{!isPlayer _driver} &&" \n
+                                         "{" \n
+                                         "	switch (behaviour effectiveCommander _vehicle) do" \n
+                                         "	{" \n
+                                         "		case ""AWARE"": {true};" \n
+                                         "		case ""COMBAT"": {true};" \n
+                                         "		case ""STEALTH"": {true};" \n
+                                         "		default {false};" \n
+                                         "	}" \n
+                                         "} &&" \n
+                                         "{" \n
+                                         "	switch (currentCommand _vehicle) do" \n
+                                         "	{" \n
+                                         "		case """": {true};" \n
+                                         "		case ""MOVE"": {true};" \n
+                                         "		case ""STOP"": {true};" \n
+                                         "		default {false};" \n
+                                         "	}" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "CALCULATE_THREAT">*/
+                class CALCULATE_THREAT
+                {
+                        name = "CALCULATE_THREAT";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/"_previousTarget = _curTgt;" \n
+                         "_curTgt = objNull;" \n
+                         "_curTgt = [_vehicle, _previousTarget] call AL9K_fnc_FindTarget;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "NOTARGET">*/
+                                class NOTARGET
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="____FAKE____";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "FOUND_TARGET">*/
+                                class FOUND_TARGET
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="LOAD_AMMO";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "LOAD_AMMO">*/
+                class LOAD_AMMO
+                {
+                        name = "LOAD_AMMO";
+                        itemno = 10;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "TANK">*/
+                                class TANK
+                                {
+                                        itemno = 11;
+                                        priority = 150.000000;
+                                        to="ORIENT_HULL";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SOFT">*/
+                                class SOFT
+                                {
+                                        itemno = 12;
+                                        priority = 100.000000;
+                                        to="ORIENT_HULL";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "MAN">*/
+                                class MAN
+                                {
+                                        itemno = 13;
+                                        priority = 50.000000;
+                                        to="ORIENT_HULL";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SAME_TARGET">*/
+                                class SAME_TARGET
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="ORIENT_HULL";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "ORIENT_HULL">*/
+                class ORIENT_HULL
+                {
+                        name = "ORIENT_HULL";
+                        itemno = 16;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "____FAKE____">*/
+                class ____FAKE____
+                {
+                        name = "____FAKE____";
+                        itemno = 20;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="BEGIN";
+        finalStates[] =
+        {
+                "EXIT",
+        };
+};
+/*%FSM</COMPILE>*/
