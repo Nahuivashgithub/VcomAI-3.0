@@ -4,7 +4,7 @@ waitUntil {!isNil "CBAACT"};
 if !(CBAACT) exitwith {};
 
 [
-    "Vcm_ActivateAI", // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    "VCM_ActivateAI", // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "CHECKBOX", // setting type
     "Vcom Active", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "VCOM SETTINGS", // Pretty name of the category where the setting can be found. Can be stringtable entry.
@@ -12,7 +12,7 @@ if !(CBAACT) exitwith {};
     true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
-        Vcm_ActivateAI = _value;
+        VCM_ActivateAI = _value;
     } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
@@ -21,7 +21,7 @@ if !(CBAACT) exitwith {};
     "CHECKBOX", // setting type
     "Enable Debug Mode. Mostly systemchat messages.", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "VCOM SETTINGS", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-		false,// data for this setting:
+	false,// data for this setting:
     true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
@@ -56,6 +56,19 @@ if !(CBAACT) exitwith {};
 ] call CBA_Settings_fnc_init;
 
 [
+    "VCM_ARTYSIDES", // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    "LIST", // setting type
+    "Sides that will use FFE/VCOM Artillery", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "VCOM SETTINGS", // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    [[[west,east,resistance],[west,east],[west],[east],[resistance],[resistance,west],[resistance,east]],[["West, East, Resistance"],["West, East"],["West"],["East"],["Resistance"],["Resistance, West"],["Resistance, East"]],0], // data for this setting:
+    true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
+    {  
+        params ["_value"];
+        VCM_ARTYSIDES = _this;
+    } // function that will be executed once on mission start and every time the setting is changed.
+] call CBA_Settings_fnc_init;
+
+[
     "VCM_StealVeh", // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "CHECKBOX", // setting type
     "AI steal empty/unlocked vehicles?", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
@@ -86,7 +99,7 @@ if !(CBAACT) exitwith {};
     "CHECKBOX", // setting type
     "AI generate new waypoints to flank.", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "VCOM SETTINGS", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-		true,// data for this setting:
+	true,// data for this setting:
     true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
@@ -99,7 +112,7 @@ if !(CBAACT) exitwith {};
     "CHECKBOX", // setting type
     "AI change formations based on location.", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "VCOM SETTINGS", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-		true,// data for this setting:
+	true,// data for this setting:
     true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
@@ -112,7 +125,7 @@ if !(CBAACT) exitwith {};
     "CHECKBOX", // setting type
     "AI impacted by Vcom skill settings.", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "VCOM SETTINGS", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-		true,// data for this setting:
+	true,// data for this setting:
     true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
@@ -138,7 +151,7 @@ if !(CBAACT) exitwith {};
     "CHECKBOX", // setting type
     "AI Ragdoll when hit?", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "VCOM SETTINGS", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-		true,// data for this setting:
+	true,// data for this setting:
     true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
@@ -290,6 +303,7 @@ if !(CBAACT) exitwith {};
     true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
+		RydFFE_Debug = _value;
     } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
@@ -329,6 +343,7 @@ if !(CBAACT) exitwith {};
     true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
+		RydFFE_OnePhase = _value;
     } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
@@ -341,6 +356,7 @@ if !(CBAACT) exitwith {};
     true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
+		RydFFE_2PhWithoutFO = _value;
     } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
@@ -353,6 +369,7 @@ if !(CBAACT) exitwith {};
     true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
+		RydFFE_Acc = _value;
     } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
@@ -365,6 +382,7 @@ if !(CBAACT) exitwith {};
     true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
+		RydFFE_Safe = _value;
     } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
@@ -377,6 +395,7 @@ if !(CBAACT) exitwith {};
     true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
+		RydFFE_Monogamy = _value;
     } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
@@ -389,6 +408,7 @@ if !(CBAACT) exitwith {};
     true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
+		RydFFE_Amount = _value;
     } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
@@ -401,6 +421,7 @@ if !(CBAACT) exitwith {};
     true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
+		RydFFE_ShellView = _value;
     } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
@@ -413,7 +434,10 @@ if !(CBAACT) exitwith {};
     true, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {  
         params ["_value"];
+		RydFFE_FoAccGain = _value;
     } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
+
+diag_log "VCOM: Loaded CBA settings";
 
 };
